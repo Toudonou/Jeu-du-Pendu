@@ -9,19 +9,20 @@ while play == 1:
     hideWord = []
     win = False
 
-    for i in word:
-        hideWord.append("*")
+    hideWord = ["*" for i in word]
 
     while nbrCoups:
         badLetter = True
         print("Squelette du mot : " +  "".join(hideWord).upper()) # "-".join(["4", "e", "fdvdf"]) -> "4-e-fdvdf"
         print("Nombre de coups restant : " + str(nbrCoups)) # str(475) -> "475"
         entrer = input("Entrer une lettre : ")
+        
+        # check if the letter is in the word
         for i in range(len(word)):
             if entrer == word[i]:
                 hideWord[i] = entrer
                 badLetter = False
-                break
+                 
         
         if badLetter:
             print("Vous avez entré une mauvaise lettre")
@@ -40,7 +41,7 @@ while play == 1:
     if win:
         print("\nFELICITATION !!!\n")
     else:
-        print("\nPERDU\n")
+        print("\nPERDU. Le vrai mot est : " + word)
     
     play = int(input("Play again (1 pour oui, 2 pour non) : "))
     print("")
